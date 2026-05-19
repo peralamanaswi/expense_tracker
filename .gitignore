@@ -1,14 +1,6 @@
 node_modules/
 .env
-backend/.env
-frontend/.env
-backend/uploads/*
-!backend/uploads/.gitkeep
-backend/vision-key.json
 dist/
 .DS_Store
 npm-debug.log*
-vision-key.json
-.env
 *.log
-*.traineddata

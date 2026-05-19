@@ -1,11 +1,15 @@
 import multer from "multer";
+import fs from "fs";
+import os from "os";
 import path from "path";
 
 const allowedMimeTypes = ["image/jpeg", "image/png", "image/webp"];
+const uploadDir = process.env.VERCEL ? os.tmpdir() : path.resolve("uploads");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/");
+    fs.mkdirSync(uploadDir, { recursive: true });
+    cb(null, uploadDir);
   },
   filename: (req, file, cb) => {
     const safeName = file.originalname.replace(/[^a-zA-Z0-9.-]/g, "_");
